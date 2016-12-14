@@ -3,30 +3,48 @@
  */
 
 define([
-  "jquery", "app/places", "app/Tile"
-], function ($, Places, Tile) {
+  "jquery", "app/places", "app/Tile", "app/EventTile"
+], function ($, Places, Tile, EventTile) {
   var $place = $("#place");
   var $loader = $("#loader");
+  var $eventsLoader = $("#eventsLoader");
+  var placesContainer = $("#placesContainer");
+  var eventsContainer = $("#eventsContainer");
+  var weatherContainer = $("#weatherContainer");
+
   $("#search").keypress(function (e) {
     if (e.which === 13) {
-      var container = $("#resultsContainer");
-      container.find(".tile").remove();
-      $loader.show();
       var place = $(this).val();
-      Places.getWeather(place).then(function (weather) {
-        console.debug("Weather:", weather);
-      });
-
-      Places.getThings(place).then(function (results) {
-        console.debug("ToDo: ", results);
-        results.list.forEach(function (place) {
-          if (place.photos && place.photos.length) {
-            var tile = new Tile(place, $("#resultsContainer"));
-            tile.render();
-          }
-          $loader.hide();
-        })
-      })
+      renderPlaces(place);
+      renderEvents(place);
     }
-  })
+  });
+
+  function renderPlaces(place) {
+    placesContainer.find(".tile").remove();
+    $loader.show();
+
+    Places.listSights(place).then(function (results) {
+      console.debug("ToDo: ", results);
+      $loader.hide();
+      results.list.forEach(function (place) {
+        var tile = new Tile(place, $("#placesContainer"));
+        tile.render();
+      })
+    })
+  }
+
+  function renderEvents(place) {
+    eventsContainer.find(".event").remove();
+    $eventsLoader.show();
+    eventsContainer.css("visibility", "visible");
+    Places.listEvents(place).then(function (data) {
+      console.debug("Got Events for", place, data);
+      data.events.forEach(function (event) {
+        var eventRow = new EventTile(event, eventsContainer);
+        eventRow.render();
+      });
+      $eventsLoader.hide();
+    })
+  }
 });

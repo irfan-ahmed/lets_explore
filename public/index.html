@@ -3,13 +3,6 @@
   <head>
     <meta charset="UTF-8">
     <title>Things To Do!</title>
-    <!-- Latest compiled and minified CSS -->
-    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css"
-          integrity="sha384-BVYiiSIFeK1dGmJRAkycuHAHRg32OmUcww7on3RYdg4Va+PmSTsz/K68vbdEjh4u" crossorigin="anonymous">
-
-    <!-- Optional theme -->
-    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap-theme.min.css"
-          integrity="sha384-rHyoN1iRsVXV4nD0JutlnGaslCJuC7uwjduW9SVrLvRYooPp2bWYgmgJQIXwl/Sp" crossorigin="anonymous">
     <link href="css/main.css" rel="stylesheet"/>
     <script data-main="js/app" src="js/lib/require.js"></script>
   </head>
@@ -25,11 +18,26 @@
           <input type="search" id="search" class="search"/>
           <div class="help">Type in the name of a city you plan to visit and hit enter.</div>
         </div>
-        <div class="results-section" id="resultsContainer">
-          <img src="images/spinner.gif" class="loader" id="loader"/>
+        <div class="results-section">
+          <div class="leftContainer" id="placesContainer">
+            <img src="images/spinner.gif" class="loader" id="loader"/>
+          </div>
+          <div class="rightContainer">
+            <div id="weatherContainer" class="weather">Weather</div>
+            <div id="eventsContainer" class="events">
+              <h4>Events</h4>
+              <img src="images/spinner.gif" class="loader" id="eventsLoader"/>
+            </div>
+          </div>
         </div>
       </div>
-      <div class="footer">footer</div>
+      <div class="footer">
+        <span class="copyright">Copyright &copy; 2016, Irfan Ahmed. All Rights Reserved</span>
+        <span class="links">
+          <a href="https://github.com/irfan-ahmed/lets_explore">Source</a>
+          <a href="https://github.com/irfan-ahmed/lets_explore/blob/master/LICENSE">MIT License</a>
+        </span>
+      </div>
     </div>
   </body>
 </html>

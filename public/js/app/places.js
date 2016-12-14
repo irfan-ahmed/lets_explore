@@ -12,7 +12,7 @@ define([
     return http.get("/weather", {place: place});
   };
 
-  Places.prototype.getThings = function (place) {
+  Places.prototype.listSights = function (place) {
     return http.get("/thingstodo", {place: place});
   };
 
@@ -20,6 +20,14 @@ define([
     console.debug("Getting Photo : ", data);
     data.height = 250;
     return http.get("/photos", data)
+  };
+
+  Places.prototype.listEvents = function (place, type) {
+    console.debug("Getting Events", place, type);
+    return http.get("/events", {
+      city: place,
+      type: type
+    })
   };
 
   return new Places();
