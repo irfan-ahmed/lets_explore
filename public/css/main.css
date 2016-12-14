@@ -62,6 +62,10 @@ h1, h2, h3, h4, h5, h6 {
       border-radius: 5px;
       padding: 6px;
       font-size: 110%; }
+    .main-container .contents .search-section .placeInfoContainer {
+      color: #8bae62;
+      /* font-weight: bold; */
+      font-size: 16px; }
   .main-container .contents .results-section {
     top: 86px;
     display: flex;
