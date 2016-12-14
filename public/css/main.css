@@ -76,7 +76,7 @@ h1, h2, h3, h4, h5, h6 {
         padding: 5px;
         visibility: hidden; }
       .main-container .contents .results-section .rightContainer .events {
-        top: 60px;
+        top: 54px;
         border-top: 2px solid #f4f4f4;
         display: flex;
         flex-direction: column;
@@ -97,6 +97,21 @@ h1, h2, h3, h4, h5, h6 {
             font-size: 90%; }
         .main-container .contents .results-section .rightContainer .events .event:last-child {
           border-bottom: none; }
+      .main-container .contents .results-section .rightContainer .weather {
+        display: flex; }
+        .main-container .contents .results-section .rightContainer .weather .temp {
+          font-size: 36px;
+          color: #0577ab;
+          padding-right: 10px;
+          border-right: 3px dotted #ededed;
+          font-style: italic; }
+          .main-container .contents .results-section .rightContainer .weather .temp .degrees {
+            vertical-align: super;
+            font-size: 17px;
+            padding-left: 5px; }
+        .main-container .contents .results-section .rightContainer .weather .desc {
+          align-self: center;
+          padding-left: 10px; }
     .main-container .contents .results-section .loader {
       display: none; }
 .main-container .footer {

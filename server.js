@@ -38,7 +38,7 @@ app.get("/api/photos", function (req, res) {
 });
 
 app.get("/api/weather", function (req, res) {
-  weather.getWeather(req.query.place, options.proxy).then(function (weatherData) {
+  weather.getWeather(req.query, options.proxy).then(function (weatherData) {
     res.json({weather: weatherData});
   }).catch(function (e) {
     res.status(500, {error: e});

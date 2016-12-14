@@ -8,6 +8,7 @@ define([
   var $place = $("#place");
   var $loader = $("#loader");
   var $eventsLoader = $("#eventsLoader");
+  var $weatherLoader = $("#weatherLoader");
   var placesContainer = $("#placesContainer");
   var eventsContainer = $("#eventsContainer");
   var weatherContainer = $("#weatherContainer");
@@ -16,6 +17,7 @@ define([
     if (e.which === 13) {
       var place = $(this).val();
       renderPlaces(place);
+      renderWeather(place);
       renderEvents(place);
     }
   });
@@ -45,6 +47,25 @@ define([
         eventRow.render();
       });
       $eventsLoader.hide();
+    })
+  }
+
+  function renderWeather(place) {
+    weatherContainer.find(".temp").remove();
+    weatherContainer.find(".desc").remove();
+    $weatherLoader.show();
+    weatherContainer.css("visibility", "visible");
+    Places.getWeather(place).then(function (data) {
+      var temp = $("<div/>").addClass("temp").text(data.weather.main.temp);
+      temp.append($("<span/>").addClass("degrees").html("&deg;F"));
+      weatherContainer.append(temp);
+
+      var description = data.weather.weather.map(function (desc) {
+        return desc.main;
+      });
+      weatherContainer.append($("<div/>").addClass("desc").text(description.join(", ")));
+      $weatherLoader.hide();
+      weatherContainer.append(div);
     })
   }
 });

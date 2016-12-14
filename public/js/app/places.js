@@ -9,7 +9,7 @@ define([
   }
 
   Places.prototype.getWeather = function (place) {
-    return http.get("/weather", {place: place});
+    return http.get("/weather", {city: place});
   };
 
   Places.prototype.listSights = function (place) {
