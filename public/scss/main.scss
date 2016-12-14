@@ -1,0 +1,144 @@
+/** Copyright 2016, Irfan Ahmed. All Rights Reserved **/
+
+$borderColor: #ddd;
+
+.absolute {
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  padding: 5px;
+}
+
+h1, h2, h3, h4, h5, h6 {
+  margin: 0;
+  padding: 0;
+  margin-bottom: 4px;
+}
+
+.main-container {
+  .help {
+    font-size: 90%;
+    color: #5f9ea0;
+    padding: 3px 0;
+  }
+
+  .masthead {
+    @extend .absolute;
+    bottom: initial;
+    height: 65px;
+    border-bottom: 2px solid $borderColor;
+    display: flex;
+    align-items: center;
+    justify-content: flex-end;
+    padding: 0 15px;
+    background: #0a3557 url("../images/world.jpg") left center no-repeat;
+
+    h1 {
+      color: #4e8eb3;
+    }
+  }
+
+  .contents {
+    @extend .absolute;
+    top: 65px;
+    bottom: 30px;
+
+    .search-section {
+      @extend .absolute;
+      height: 85px;
+      bottom: initial;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      flex-direction: column;
+      padding: 15px 10px;
+
+      .search {
+        width: 50%;
+        border: 1px solid $borderColor;
+        border-radius: 5px;
+        padding: 6px;
+        font-size: 110%;
+      }
+    }
+
+    .results-section {
+      @extend .absolute;
+      top: 86px;
+      display: flex;
+      justify-content: center;
+      border-top: 1px solid #f4f4f4;
+      padding: 20px 5px;
+      flex-wrap: wrap;
+      overflow: auto;
+      align-content: flex-start;
+      align-items: flex-start;
+
+      .loader {
+        display: none;
+      }
+    }
+  }
+
+  .footer {
+    @extend .absolute;
+    top: initial;
+    height: 30px;
+    border-top: 2px solid $borderColor;
+  }
+}
+
+$tileRadius: 5px;
+.tile {
+  cursor: pointer;
+  width: 250px;
+  height: 250px;
+  border: 1px solid darken($borderColor, 10%);
+  background: transparent center center no-repeat;
+  position: relative;
+  margin: 5px 10px;
+  border-radius: $tileRadius;
+
+  .caption {
+    @extend .absolute;
+    height: 40px;
+    top: initial;
+    background: rgba(68, 68, 68, 0.92);
+    border-radius: 0 0 $tileRadius $tileRadius;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 0;
+
+    span.label {
+      display: inline-block;
+      width: 75%;
+      white-space: normal;
+      text-align: left;
+    }
+
+    span.rating {
+      padding-right: 0.6em;
+
+      span.star {
+        font-size: 70%;
+      }
+
+      span.filled {
+        color: #ffe966;
+      }
+    }
+  }
+
+  .icon {
+    @extend .absolute;
+    bottom: initial;
+    left: initial;
+    margin: 3px;
+    height: 26px;
+    background: #fff;
+    border-radius: 20px;
+  }
+}

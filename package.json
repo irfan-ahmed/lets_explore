@@ -1,0 +1,25 @@
+{
+  "name": "thingstodo",
+  "version": "1.0.0",
+  "description": "Lets Explore!!",
+  "main": "server.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "https://source.developers.google.com/p/thingstodo-152315/r/thingstodo"
+  },
+  "keywords": [
+    "places"
+  ],
+  "author": "Irfan Ahmed",
+  "license": "MIT",
+  "dependencies": {
+    "body-parser": "^1.15.2",
+    "express": "^4.14.0",
+    "minimist": "^1.2.0",
+    "request": "^2.79.0",
+    "when": "^3.7.7"
+  }
+}
