@@ -34,6 +34,11 @@ h1, h2, h3, h4, h5, h6 {
     padding: 5px 0;
   }
 
+  .loader-small {
+    height: 18px;
+    width: 18px;
+  }
+
   .masthead {
     @extend .absolute;
     bottom: initial;
@@ -54,7 +59,7 @@ h1, h2, h3, h4, h5, h6 {
   .contents {
     @extend .absolute;
     top: 65px;
-    bottom: 30px;
+    bottom: 40px;
 
     .search-section {
       @extend .absolute;
@@ -143,6 +148,8 @@ h1, h2, h3, h4, h5, h6 {
 
         .weather {
           display: flex;
+          align-items: center;
+          justify-content: center;
 
           .temp {
             font-size: 36px;
@@ -174,7 +181,7 @@ h1, h2, h3, h4, h5, h6 {
   .footer {
     @extend .absolute;
     top: initial;
-    height: 30px;
+    height: 40px;
     border-top: 2px solid #ddd;
     color: #666;
     display: flex;
@@ -253,4 +260,38 @@ $tileRadius: 5px;
     background: #fff;
     border-radius: 20px;
   }
+}
+
+// thirdparty
+.eventful-badge,
+.eventful-badge * {
+  margin: 0 !important;
+  padding: 0 !important;
+  border: 0 !important;
+  text-align: center !important;
+  color: #CCC !important;
+  font-family: Arial !important;
+  text-decoration: none !important;
+}
+
+.eventful-large {
+  position: relative !important;
+  width: 140px !important;
+  font-size: 15px !important;
+  line-height: 17px !important;
+  font-weight: bold !important;
+}
+
+.eventful-medium {
+  position: relative !important;
+  width: 100px !important;
+  font-size: 12px !important;
+  line-height: 13px !important;
+}
+
+.eventful-small {
+  position: relative !important;
+  width: 100px !important;
+  font-size: 11px !important;
+  line-height: 11px !important;
 }

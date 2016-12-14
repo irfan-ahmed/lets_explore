@@ -17,13 +17,11 @@ define([
   };
 
   Places.prototype.getPhotos = function (data) {
-    console.debug("Getting Photo : ", data);
     data.height = 250;
     return http.get("/photos", data)
   };
 
   Places.prototype.listEvents = function (place, type) {
-    console.debug("Getting Events", place, type);
     return http.get("/events", {
       city: place,
       type: type

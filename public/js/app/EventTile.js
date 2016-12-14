@@ -7,7 +7,6 @@ define([
 ], function ($) {
   function EventTile(params, container) {
     $.extend(true, this, params);
-    console.debug("Initing Event: ", params, container);
     this.container = container;
   }
 

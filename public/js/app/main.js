@@ -17,7 +17,6 @@ define([
     if (e.which === 13) {
       var place = $(this).val();
       renderPlaces(place);
-      renderWeather(place);
       renderEvents(place);
     }
   });
@@ -26,13 +25,24 @@ define([
     placesContainer.find(".tile").remove();
     $loader.show();
 
+    // fetch weather for the places shown
+    // handles the case where duplicate cities are found
+    weatherContainer.find(".temp").remove();
+    weatherContainer.find(".desc").remove();
+    $weatherLoader.show();
+    weatherContainer.css("visibility", "visible");
+
     Places.listSights(place).then(function (results) {
       console.debug("ToDo: ", results);
       $loader.hide();
-      results.list.forEach(function (place) {
-        var tile = new Tile(place, $("#placesContainer"));
-        tile.render();
-      })
+      console.debug("Got Places: ", results);
+      if (results.list && results.list.length) {
+        renderWeather(results.list[0].formatted_address);
+        results.list.forEach(function (place) {
+          var tile = new Tile(place, $("#placesContainer"));
+          tile.render();
+        })
+      }
     })
   }
 
@@ -51,21 +61,20 @@ define([
   }
 
   function renderWeather(place) {
-    weatherContainer.find(".temp").remove();
-    weatherContainer.find(".desc").remove();
-    $weatherLoader.show();
-    weatherContainer.css("visibility", "visible");
     Places.getWeather(place).then(function (data) {
-      var temp = $("<div/>").addClass("temp").text(data.weather.main.temp);
+      var temp = $("<div/>").addClass("temp").text(parseInt(data.weather.main.temp));
       temp.append($("<span/>").addClass("degrees").html("&deg;F"));
       weatherContainer.append(temp);
 
       var description = data.weather.weather.map(function (desc) {
-        return desc.main;
+        var text = desc.main;
+        if (desc.description && (desc.main.toLowerCase().trim() != desc.description.toLowerCase().trim())) {
+          text += ", " + desc.description;
+        }
+        return text;
       });
       weatherContainer.append($("<div/>").addClass("desc").text(description.join(", ")));
       $weatherLoader.hide();
-      weatherContainer.append(div);
     })
   }
 });
