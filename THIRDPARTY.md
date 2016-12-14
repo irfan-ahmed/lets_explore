@@ -2,7 +2,9 @@
 
 #### Google API
 * Google Places API
+    * https://developers.google.com/places/
 * Google Cloud Engine
+    *
 
 #### Events API
 * Eventful API

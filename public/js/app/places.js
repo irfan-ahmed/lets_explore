@@ -13,7 +13,17 @@ define([
   };
 
   Places.prototype.listSights = function (place) {
-    return http.get("/thingstodo", {place: place});
+    return http.get("/place/thingstodo", {place: place});
+  };
+
+  Places.prototype.getDetails = function (place) {
+    console.debug("/api/place/details", place);
+    return http.get("/place/details", place);
+  };
+
+  Places.prototype.getTimeDetails = function (location) {
+    console.debug("/api/place/time", location);
+    return http.get("/place/time", location);
   };
 
   Places.prototype.getPhotos = function (data) {

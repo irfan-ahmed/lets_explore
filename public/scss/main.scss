@@ -61,6 +61,14 @@ h1, h2, h3, h4, h5, h6 {
     top: 65px;
     bottom: 40px;
 
+    .error {
+      background: #ffeff2;
+      padding: 10px;
+      border: 1px solid #e7d1d5;
+      border-radius: 4px;
+      color: #666;
+    }
+
     .search-section {
       @extend .absolute;
       height: 85px;

@@ -19,14 +19,30 @@ app.use(bodyParser.urlencoded({extended: false}));
 app.use(bodyParser.json());
 
 // static content
-app.use(express.static("public"));
+app.use("/explorer/", express.static("public"));
 
-app.get('/api/thingstodo', function (req, res) {
+app.get('/api/place/thingstodo', function (req, res) {
   google.sightsToSee(req.query.place, options.proxy).then(function (results) {
     res.json({place: req.query.place, list: results});
   }).catch(function (e) {
     res.status(500, {place: req.query.place, error: e});
   });
+});
+
+app.get("/api/place/details", function (req, res) {
+  google.placeDetails(req.query, options.proxy).then(function (details) {
+    res.json(details);
+  }).catch(function (e) {
+    res.status(500, {error: e});
+  })
+});
+
+app.get("/api/place/time", function (req, res) {
+  google.timeDetails(req.query, options.proxy).then(function (details) {
+    res.json(details);
+  }).catch(function (e) {
+    res.status(500, {error: e});
+  })
 });
 
 app.get("/api/photos", function (req, res) {
@@ -46,7 +62,7 @@ app.get("/api/weather", function (req, res) {
 });
 
 app.get("/api/events", function (req, res) {
-  events.listEvents(req.query).then(function (events) {
+  events.listEvents(req.query, options.proxy).then(function (events) {
     res.json({events: events});
   }).catch(function (e) {
     res.status(500, {error: e});

@@ -31,7 +31,7 @@ module.exports.listEvents = function (place, proxy) {
       }
       if (response.statusCode === 200) {
         var data = JSON.parse(body);
-        var list = data.events.event;
+        var list = (data && data.events && data.events.event) || [];
         var events = list.map(function (event) {
           return {
             url: event.url,

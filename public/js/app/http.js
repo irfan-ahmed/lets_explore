@@ -19,11 +19,9 @@ define([
     }
 
     var url = this.url + command;
-    console.debug("Getting: ", url, command);
-    
+
     return new Promise(function (resolve, reject) {
       $.get(url, data).done(function (response) {
-        console.debug(url, response);
         resolve(response)
       }).fail(function (e) {
         console.error(url, data, e);

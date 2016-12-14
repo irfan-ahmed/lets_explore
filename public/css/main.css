@@ -42,6 +42,12 @@ h1, h2, h3, h4, h5, h6 {
 .main-container .contents {
   top: 65px;
   bottom: 40px; }
+  .main-container .contents .error {
+    background: #ffeff2;
+    padding: 10px;
+    border: 1px solid #e7d1d5;
+    border-radius: 4px;
+    color: #666; }
   .main-container .contents .search-section {
     height: 85px;
     bottom: initial;
