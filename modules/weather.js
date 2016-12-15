@@ -4,7 +4,7 @@
 
 var when = require("when");
 var request = require("request");
-var API_KEY = "79c54ce00e6f3cce1b10d621d157be5d";
+var API_KEY = "";
 var URL = "http://api.openweathermap.org/data/2.5/weather?appid=" + API_KEY + "&units=imperial";
 
 module.exports.getWeather = function (place, proxy) {

@@ -5,7 +5,7 @@
 var when = require("when");
 var request = require("request");
 
-var API_KEY = "AIzaSyB5ZfCFU0siDE1Cuvi2wez7mvlkLn4w6gY";
+var API_KEY = "";
 
 module.exports.photos = function (params, proxy) {
   var ref = params.photo_reference;
